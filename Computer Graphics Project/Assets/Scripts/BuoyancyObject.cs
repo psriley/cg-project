@@ -37,6 +37,7 @@ public class BuoyancyObject : MonoBehaviour
             if (difference < 0)
             {
                 rb.AddForceAtPosition(Vector3.up * floatingForce * Mathf.Abs(difference), floaters[i].position, ForceMode.Force);
+                /*rb.AddForceAtPosition(Vector3.right * riverManager.waveSpeed * floatingForce, floaters[i].position, ForceMode.Force);*/
                 floatersUnderwater += 1;
                 if (!underwater)
                 {
@@ -46,7 +47,7 @@ public class BuoyancyObject : MonoBehaviour
             }
         }
         
-        if (underwater && floatersUnderwater < (floaters.Length / 2))
+        if (underwater && floatersUnderwater == 0)
         {
             underwater = false;
             SwitchState(underwater);

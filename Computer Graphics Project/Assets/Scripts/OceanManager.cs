@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class OceanManager : MonoBehaviour
 {
-    public float waveHeight = 3.26f;
+    /*public float waveHeight = 3.26f;
     public float waveFrequency = 8.62f;
-    public float waveSpeed = 0.2f;
+    public float waveSpeed = 0.2f;*/
+    public float waveHeight = 0.07f;
+    public float waveFrequency = 0.01f;
+    public float waveSpeed = 0.04f;
     public Transform river;
 
     Material riverMat;
@@ -26,7 +29,8 @@ public class OceanManager : MonoBehaviour
 
     public float WaterHeightAtPosition(Vector3 position)
     {
-        return river.position.y + waveDisplacement.GetPixelBilinear(position.x * waveFrequency, position.z * waveFrequency * Time.time * waveSpeed).g * waveHeight * river.localScale.x;
+        return river.position.y + waveDisplacement.GetPixelBilinear(position.x * waveFrequency * river.localScale.x, (position.z * waveFrequency + Time.time * waveSpeed) * river.localScale.z).g * waveHeight;
+        /*return river.position.y + waveDisplacement.GetPixelBilinear(position.x * waveFrequency, position.z * waveFrequency + Time.time * waveSpeed).g * waveHeight * river.localScale.x;*/
     }
 
     private void OnValidate()
