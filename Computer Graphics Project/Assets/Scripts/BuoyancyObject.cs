@@ -15,7 +15,7 @@ public class BuoyancyObject : MonoBehaviour
 
     public float floatingForce = 15f;
 
-    OceanManager riverManager;
+    RiverManager riverManager;
     Rigidbody rb;
     bool underwater;
     int floatersUnderwater;
@@ -23,7 +23,7 @@ public class BuoyancyObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        riverManager = FindObjectOfType<OceanManager>();
+        riverManager = FindObjectOfType<RiverManager>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -37,7 +37,7 @@ public class BuoyancyObject : MonoBehaviour
             if (difference < 0)
             {
                 rb.AddForceAtPosition(Vector3.up * floatingForce * Mathf.Abs(difference), floaters[i].position, ForceMode.Force);
-                /*rb.AddForceAtPosition(Vector3.right * riverManager.waveSpeed * floatingForce, floaters[i].position, ForceMode.Force);*/
+                /*rb.AddForceAtPosition(Vector3.right * riverManager.currentSpeed * floatingForce, floaters[i].position, ForceMode.Force);*/
                 floatersUnderwater += 1;
                 if (!underwater)
                 {
