@@ -29,7 +29,7 @@ public class OceanManager : MonoBehaviour
 
     public float WaterHeightAtPosition(Vector3 position)
     {
-        return river.position.y + waveDisplacement.GetPixelBilinear(position.x * waveFrequency * river.localScale.x, (position.z * waveFrequency + Time.time * waveSpeed) * river.localScale.z).g * waveHeight;
+        return river.position.y + waveDisplacement.GetPixelBilinear(position.x * waveFrequency * (river.localScale.x/50), (position.z * waveFrequency + Time.time * waveSpeed) * (river.localScale.z/50)).g * waveHeight;
         /*return river.position.y + waveDisplacement.GetPixelBilinear(position.x * waveFrequency, position.z * waveFrequency + Time.time * waveSpeed).g * waveHeight * river.localScale.x;*/
     }
 
@@ -44,8 +44,8 @@ public class OceanManager : MonoBehaviour
 
     void UpdateMaterial()
     {
-        riverMat.SetFloat("_WaveFrequency", waveFrequency);
+        riverMat.SetFloat("_Wavelength", waveFrequency);
         riverMat.SetFloat("_WaveSpeed", waveSpeed);
-        riverMat.SetFloat("_WaveHeight", waveHeight);
+        riverMat.SetFloat("_Wavelength", waveHeight);
     }
 }
