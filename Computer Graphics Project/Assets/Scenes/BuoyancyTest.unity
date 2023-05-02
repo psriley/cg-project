@@ -651,7 +651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b25b95d14ef2a364aa0102bb0e1f76f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 23.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b25b95d14ef2a364aa0102bb0e1f76f5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b25b95d14ef2a364aa0102bb0e1f76f5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 891abea7d25429245b309fa7241f311f, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ab00b387ee344d458e81b6f69d13c05, type: 2}
     - target: {fileID: 919132149155446097, guid: b25b95d14ef2a364aa0102bb0e1f76f5, type: 3}
       propertyPath: m_Name
       value: river_subdivided_plane
@@ -824,9 +824,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306b0fc9323ab344da09cc6cf58e6f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveHeight: 10.19
+  waveHeight: 5
   waveFrequency: 0.01
-  waveSpeed: 0.15
+  waveSpeed: 0.05
   river: {fileID: 1039157026}
 --- !u!1 &1501756341
 GameObject:
