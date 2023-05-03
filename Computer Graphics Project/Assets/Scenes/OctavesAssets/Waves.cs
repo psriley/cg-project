@@ -67,6 +67,17 @@ public class Waves : MonoBehaviour
         return height * transform.lossyScale.y / dist;
     }
 
+    public float GetSpeed()
+    {
+        float maxSpeed = Octaves[0].speed.x;
+        foreach (Octave o in Octaves)
+        {
+            if (o.speed.x > maxSpeed) { maxSpeed = o.speed.x; }
+        }
+
+        return maxSpeed;
+    }
+
     private int[] GenerateTries()
     {
         var tries = new int[Mesh.vertices.Length * 6];
