@@ -9,6 +9,8 @@ public class WaterFloat : MonoBehaviour
     public float WaterDrag = 10;
     public Transform[] FloatPoints;
     public bool AttachToSurface;
+    public bool hasBeenSubmerged;
+    public ParticleSystem ps;
 
     // used components
     protected Rigidbody Rigidbody;
@@ -30,6 +32,7 @@ public class WaterFloat : MonoBehaviour
         Waves = FindObjectOfType<Waves>();
         Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.useGravity = false;
+        ps.gameObject.SetActive(false);
 
         // compute center
         WaterLinePoints = new Vector3[FloatPoints.Length];
@@ -89,6 +92,9 @@ public class WaterFloat : MonoBehaviour
 
     void FixedUpdate()
     {
+        // This shouldn't change unless changed in the inspector
+        float waveSpeed = Waves.GetSpeed();
+
         // default water surface
         var newWaterLine = 0f;
         var pointUnderWater = false;
@@ -114,6 +120,12 @@ public class WaterFloat : MonoBehaviour
         Rigidbody.drag = AirDrag;
         if (WaterLine > Center.y)
         {
+            if (!hasBeenSubmerged)
+            {
+                hasBeenSubmerged = true;
+                ps.gameObject.SetActive(true);
+            }
+
             Rigidbody.drag = WaterDrag;
             // underwater
             if (AttachToSurface)
@@ -134,7 +146,7 @@ public class WaterFloat : MonoBehaviour
 
         // add a force to push object toward the direction of the river (cancelling drag because drag is constantly changing)
         var dragCoeff = 1 + Rigidbody.drag;
-        Rigidbody.AddForce(Vector3.back * Waves.GetSpeed() * dragCoeff * Time.deltaTime, ForceMode.Force);
+        Rigidbody.AddForce(Vector3.back * waveSpeed * dragCoeff * Time.deltaTime, ForceMode.Force);
 
         // compute up vector
         TargetUp = GetNormal(WaterLinePoints);
@@ -145,6 +157,16 @@ public class WaterFloat : MonoBehaviour
             // attach to water surface
             TargetUp = Vector3.SmoothDamp(transform.up, TargetUp, ref smoothVectorRotation, 0.2f);
             Rigidbody.rotation = Quaternion.FromToRotation(transform.up, TargetUp) * Rigidbody.rotation;
+            if (Rigidbody.angularVelocity.x < 0)
+            {
+                Rigidbody.AddTorque((Vector3.right * waveSpeed * Time.deltaTime) / 10, ForceMode.VelocityChange);
+            }
+            Rigidbody.angularVelocity = Vector3.zero;
+        }
+        else if (!pointUnderWater && hasBeenSubmerged)
+        {
+            Rigidbody.AddTorque((Vector3.left * waveSpeed * Time.deltaTime) / 10, ForceMode.VelocityChange);
+            /*Rigidbody.AddTorque((Vector3.up * waveSpeed * Time.deltaTime) / 10, ForceMode.VelocityChange);*/
         }
     }
 
