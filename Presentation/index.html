@@ -18,6 +18,27 @@
             font-size: 40px;
             color: rgb(102, 102, 102);
         }
+        .big-box {
+            display: block;
+            width: 1400px;
+            height: 950px;
+            padding: 30px 50px;
+            background-color: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+            border: 1px solid rgba(0, 0, 0, .3);
+            border-radius: 20px;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+            font-family: Arial, sans-serif;
+            font-size: 40px;
+            color: rgb(102, 102, 102);
+        }
+        img {
+            max-height: 100%;
+            max-width: 100%
+        }
+        li {
+            font-size: 24px;
+        }
         </style>
     <head>
         <title>CIS 536 Final Project Presentation</title>
@@ -26,10 +47,36 @@
 
         <div id="impress">
             <div class="step box" data-x="0" data-y="0">
-                <h1>Background Work</h1>
+                <h1>River Shader with Buoyancy</h1>
+                <hr>
+                <h3>By: Peyton Riley</h3>
+                <p>CIS 536</p>
+            </div>
+            <div class="step box" data-x="3000" data-y="0">
+                <img src="./images/buoyancy.gif"/>
+                <p>Buoyancy with Gizmos showing the floater points around the object</p>
             </div>
             <div class="step box" data-x="0" data-y="1000">
-                <h1>Methodology</h1>
+                <h2>Background Work</h1>
+                <ul>
+                    <li>Patreon. (n.d.). Shader Graph Interactive Water(with Refraction/Grabpass, Intersection/Foam lines) | Minions Art on Patreon. https://www.patreon.com/posts/30490169</li>
+                    <li>DitzelGames. (2019c, March 2). Water Physics - Unity Ocean Tutorial 3/4 [Video]. YouTube. https://www.youtube.com/watch?v=yEGdYM0nk1I</li>
+                    <li>Brackeys. (2019, May 19). SIMPLE CARTOON WATER in Unity [Video]. YouTube. https://www.youtube.com/watch?v=Vg0L9aCRWPE</li>
+                </ul>
+            </div>
+            <div class="step box" data-x="0" data-y="2000">
+                <h2>Results</h1>
+            </div>
+            <div class="step big-box" data-x="3000" data-y="2000">
+                <img src="./images/with_ripples.gif"/>
+            </div>
+            <div class="step box" data-x="0" data-y="3000">
+                <h2>Technical Challenges</h1>
+                <hr>
+                <ul>
+                    <li>None</li>
+                    <li>Pretty much everything</li>
+                </ul>
             </div>
         </div>
 
