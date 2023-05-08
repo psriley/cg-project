@@ -9,7 +9,6 @@ public class WaterFloat : MonoBehaviour
     public float WaterDrag = 10;
     public Transform[] FloatPoints;
     public bool AttachToSurface;
-    public bool hasBeenSubmerged;
     public ParticleSystem ps;
 
     // used components
@@ -24,6 +23,9 @@ public class WaterFloat : MonoBehaviour
     protected Vector3 centerOffset;
     protected Vector3 smoothVectorRotation;
     protected Vector3 TargetUp;
+
+    [SerializeField] bool showRipples;
+    [SerializeField] bool noTorque;
 
     public Vector3 Center { get { return transform.position + centerOffset; } }
 
@@ -120,9 +122,10 @@ public class WaterFloat : MonoBehaviour
         Rigidbody.drag = AirDrag;
         if (WaterLine > Center.y)
         {
-            if (!hasBeenSubmerged)
+            // object is in the water: ripples should be displayed
+            if (!showRipples)
             {
-                hasBeenSubmerged = true;
+                showRipples = true;
                 ps.gameObject.SetActive(true);
             }
 
@@ -140,6 +143,20 @@ public class WaterFloat : MonoBehaviour
             }
 
             transform.Translate(Vector3.up * waterLineDelta * 0.9f);
+        }
+        if ((Center.y - WaterLine) < 0.75f)
+        {
+            // object is only slightly above waterline (could be a normal push from the waves): we want ripples and torque
+            showRipples = true;
+            ps.gameObject.SetActive(true);
+            noTorque = false;
+        }
+        else if ((Center.y - WaterLine) > 0.75f)
+        {
+            // object is far enough above the waves that ripples and torque should be deactivated
+            showRipples = false;
+            ps.gameObject.SetActive(false);
+            noTorque = true;
         }
 
         Rigidbody.AddForce(gravity * Mathf.Clamp(Mathf.Abs(WaterLine - Center.y), 0 , 1));
@@ -163,10 +180,9 @@ public class WaterFloat : MonoBehaviour
             }
             Rigidbody.angularVelocity = Vector3.zero;
         }
-        else if (!pointUnderWater && hasBeenSubmerged)
+        else if (!pointUnderWater && !noTorque)
         {
             Rigidbody.AddTorque((Vector3.left * waveSpeed * Time.deltaTime) / 10, ForceMode.VelocityChange);
-            /*Rigidbody.AddTorque((Vector3.up * waveSpeed * Time.deltaTime) / 10, ForceMode.VelocityChange);*/
         }
     }
 

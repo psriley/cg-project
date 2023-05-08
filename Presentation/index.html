@@ -34,10 +34,32 @@
         }
         img {
             max-height: 100%;
-            max-width: 100%
+            max-width: 100%;
+        }
+        .small-img {
+            position: relative;
+            top: 5vh;
+            left: 30%;
+            right: 30%;
+            max-height: 100%;
+            max-width: 100%;
         }
         li {
             font-size: 24px;
+        }
+        .large {
+            font-size: 40px;
+        }
+        .center-title {
+            position: relative;
+            top: 15vh;
+            text-align: center;
+        }
+        .caption {
+            position: relative;
+            top: 5vh;
+            font-size: 20px;
+            text-align: center;
         }
         </style>
     <head>
@@ -52,31 +74,71 @@
                 <h3>By: Peyton Riley</h3>
                 <p>CIS 536</p>
             </div>
-            <div class="step box" data-x="3000" data-y="0">
+
+            <div class="step big-box" data-x="0" data-y="1000">
+                <h2>Background Work</h1>
+                <hr>
+                <ul>
+                    <li>Patreon. (n.d.). Shader Graph Interactive Water(with Refraction/Grabpass, Intersection/Foam lines) | Minions Art on Patreon. https://www.patreon.com/posts/30490169</li>
+                    <li>Tom Weiland. (2020, May 10). How to Set Up Dynamic Water Physics and Boat Movement in Unity | Ship Buoyancy Tutorial [Video]. YouTube. https://www.youtube.com/watch?v=eL_zHQEju8s</li>
+                    <li>DitzelGames. (2019, March 2). Water Physics - Unity Ocean Tutorial 3/4 [Video]. YouTube. https://www.youtube.com/watch?v=yEGdYM0nk1I</li>
+                    <li>Brackeys. (2019, May 19). SIMPLE CARTOON WATER in Unity [Video]. YouTube. https://www.youtube.com/watch?v=Vg0L9aCRWPE</li>
+                </ul>
+                <div>
+                    <img class="small-img" src="./images/minions-art-interactive-water.gif"/>
+                    <p class="caption">MinionsArt's Interactive Water</p>
+                </div>
+            </div>
+
+            <div class="step box" data-x="1000" data-y="2000">
+                <h2>River Mesh and Waves</h2>
+                <hr>
+                <img style="max-height:75%; position: relative; left: 4vw;" src="./images/mesh_waves.png"/>
+            </div>
+            <div class="step big-box" data-x="1000" data-y="2000" data-z="-1000" data-rotate-y="90">
+                <img src="./images/waves_wireframe.gif" />
+                <p>GIF of the river mesh wireframe in Unity</p>
+            </div>
+
+            <div class="step box" data-x="3000" data-y="2000">
+                <h2 class="center-title">Buoyancy Floaters</h2>
+            </div>
+            <div class="step big-box" data-x="4000" data-y="2000" data-z="-2000" data-rotate-y="90">
+                <img src="./images/buoyancy_floater_below.png" />
+            </div>
+            <div class="step big-box" data-x="4000" data-y="2000" data-z="-4000" data-rotate-y="90">
+                <img src="./images/buoyancy_floater_above.png" />
+            </div>
+            <div class="step big-box" data-x="4000" data-y="2000" data-z="-6000">
                 <img src="./images/buoyancy.gif"/>
                 <p>Buoyancy with Gizmos showing the floater points around the object</p>
             </div>
-            <div class="step box" data-x="0" data-y="1000">
-                <h2>Background Work</h1>
-                <ul>
-                    <li>Patreon. (n.d.). Shader Graph Interactive Water(with Refraction/Grabpass, Intersection/Foam lines) | Minions Art on Patreon. https://www.patreon.com/posts/30490169</li>
-                    <li>DitzelGames. (2019c, March 2). Water Physics - Unity Ocean Tutorial 3/4 [Video]. YouTube. https://www.youtube.com/watch?v=yEGdYM0nk1I</li>
-                    <li>Brackeys. (2019, May 19). SIMPLE CARTOON WATER in Unity [Video]. YouTube. https://www.youtube.com/watch?v=Vg0L9aCRWPE</li>
-                </ul>
+
+            <div class="step big-box" data-x="0" data-y="2000">
+                <img src="./images/base_texture_shadergraph.PNG"/>
             </div>
-            <div class="step box" data-x="0" data-y="2000">
-                <h2>Results</h1>
+
+            <div class="step box" data-x="0" data-y="6000">
+                <h2 class="center-title">Results</h1>
             </div>
-            <div class="step big-box" data-x="3000" data-y="2000">
+            <div class="step big-box" data-x="3000" data-y="6000">
+                <h2>Demo</h2>
                 <img src="./images/with_ripples.gif"/>
             </div>
-            <div class="step box" data-x="0" data-y="3000">
+
+            <div class="step box" data-x="3000" data-y="7000">
                 <h2>Technical Challenges</h1>
                 <hr>
                 <ul>
-                    <li>None</li>
-                    <li>Pretty much everything</li>
+                    <li class="large">Buoyancy as vertex displacement</li>
+                    <li class="large">Shader in Unity, or model in Blender?</li>
+                    <li class="large">Moving the objects in the river</li>
+                    <li class="large">RenderTexture "seam" creating weird results for ripples</li>
                 </ul>
+            </div>
+
+            <div class="step box" data-x="3000" data-y="8000">
+                <h2 class="center-title">Questions?</h2>
             </div>
         </div>
 

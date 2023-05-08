@@ -58,15 +58,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_2E11270D: 0.03
+    - Vector1_2E11270D: 0.52
     - Vector1_39D35881: 1
-    - Vector1_3B48FD24: -0.27
-    - Vector1_5AE4170F: 0.15
-    - Vector1_80CAEB23: 0.3
-    - Vector1_8E5091B8: -0.33
-    - Vector1_981A3A67: 0.3
+    - Vector1_3B48FD24: -0.28
+    - Vector1_5AE4170F: 0.18
+    - Vector1_80CAEB23: 0.25
+    - Vector1_8E5091B8: 0.13
+    - Vector1_981A3A67: 0.37
     - Vector1_C1C7D298: 0.767
-    - Vector1_ECB3F2B8: 0.4
+    - Vector1_ECB3F2B8: 0.76
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 10
