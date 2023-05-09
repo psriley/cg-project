@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StylizedRiverMat 1
+  m_Name: StylizedRiverMat
   m_Shader: {fileID: -6465566751694194690, guid: e22150276576ab34980679ca36d2e079, type: 3}
   m_ValidKeywords:
   - _DISABLE_DECALS
@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_2E11270D: 0.52
+    - Vector1_2E11270D: 0.53
     - Vector1_39D35881: 1
     - Vector1_3B48FD24: -0.28
     - Vector1_5AE4170F: 0.18

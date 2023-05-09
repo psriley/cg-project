@@ -67,15 +67,23 @@ public class Waves : MonoBehaviour
         return height * transform.lossyScale.y / dist;
     }
 
-    public float GetSpeed()
+    public Vector4 GetSpeed()
     {
-        float maxSpeed = Octaves[0].speed.x;
+        float maxXSpeed = Octaves[0].speed.x;
+        float maxYSpeed = Octaves[0].speed.y;
+        float xDir = 1;
+        float yDir = 1;
+
         foreach (Octave o in Octaves)
         {
-            if (o.speed.x > maxSpeed) { maxSpeed = o.speed.x; }
+            if (Mathf.Abs(o.speed.x) > maxXSpeed) { maxXSpeed = o.speed.x; xDir = Mathf.Sign(o.speed.x); }
+        }
+        foreach (Octave o in Octaves)
+        {
+            if (Mathf.Abs(o.speed.y) > maxYSpeed) { maxYSpeed = o.speed.y; yDir = Mathf.Sign(o.speed.y); }
         }
 
-        return maxSpeed;
+        return new Vector4(xDir, maxXSpeed, yDir, maxYSpeed);
     }
 
     private int[] GenerateTries()
